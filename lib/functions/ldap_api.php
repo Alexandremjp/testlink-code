@@ -54,7 +54,8 @@ function ldap_connect_bind( $authCfg, $p_binddn = '', $p_password = '')
   // if you use -  echo 'ldap_errno:' . ldap_err2str(ldap_errno($t_ds ));
   // you will get Success!!!, no matter what has happened
   //
-  if( $t_ds !== false && $t_ds > 0 ) 
+   if(( version_compare(PHP_VERSION, '8.1.0') >= 0 && $t_ds !== false ) ||
+      ( version_compare(PHP_VERSION, '8.1.0') < 0  && $t_ds !== false && $t_ds > 0 ) )
   {
     $ret->handler=$t_ds;
     ldap_set_option($t_ds, LDAP_OPT_PROTOCOL_VERSION, $authCfg['ldap_version']);
