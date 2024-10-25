@@ -6210,7 +6210,7 @@ class testcase extends tlObjectWithAttachments {
 
     $stepSet = $this->get_steps($tcversion_id,0,
                         array('fields2get' => 'id', 'accessKey' => 'id'));
-    if( count($stepSet) > 0 )
+    if (isset($stepSet) && is_countable($stepSet)  )
     {
       $this->delete_step_by_id(array_keys($stepSet));
     }
